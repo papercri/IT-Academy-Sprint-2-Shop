@@ -40,6 +40,16 @@ let products = [
         type: 'grocery'
     },
     {
+        id: 5,
+        name: 'Makeup',
+        price: 8,
+        type: 'grocery',
+        offer: {
+            number: 2,
+            percent: 40
+        }
+    },
+    {
         id: 6,
         name: 'Butter',
         price: 8,
@@ -61,7 +71,11 @@ let products = [
         id: 9,
         name: 'Rice',
         price: 5,
-        type: 'grocery'
+        type: 'grocery',
+        offer: {
+            number: 3,
+            percent: 20
+        }
     }
 
 ];
@@ -117,17 +131,37 @@ function calculateTotal() {
     total = 0;
 
     for(let prod = 0; prod < cart.length; prod++){
-        subTotal = cart[prod].price * cart[prod].quantity;
-        total  += subTotal;
-        console.log(total);
+        if (!isNaN(cart[prod].price) && !isNaN(cart[prod].quantity)) {
+          
+            subTotal = cart[prod].price * cart[prod].quantity;
+            subTotal = applyPromotionsCart(cart[prod], subTotal);
+            
+            total  += subTotal;
+           
+        } else {
+            console.error(`Error con el producto en el carrito: ${cart[prod].id}`);
+        }
+       
     }
-  
+    
+    console.log("Total: " + total);
 }
 
 // Exercise 4
-function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+function applyPromotionsCart(product, subTotal) {
+    let discount = 0;
+    if (product.offer && product.offer.number > 0) {
+        if (product.quantity >= product.offer.number) {
+            discount = product.offer.percent;
+            console.log(`Descuento de ${discount}% aplicado al producto ${product.name}`);
+        }
+    }
+    if (discount > 0) {
+        subTotal -= subTotal * (discount / 100);
+    }
+    return subTotal;
 }
+
 
 // Exercise 5
 function printCart() {
