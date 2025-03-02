@@ -13,34 +13,9 @@ You will be in charge of setting up an initial demo version of the application f
 
 1. Clone this repo
 ```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-shop
+git clone https://github.com/papercri/IT-Academy-Sprint-2-Shop.git
 ```
 
-2. Unlink your repo from the itacademy repository.
-(Explanation: You have to upload the code to your GitHub repository, not to the IT Academy. That's why you have to unlink your project from IT Academy GitHub with the following command)
-
-```bash
-$ git remote rm origin
-```
-
-3. Link your repo to the repository you have to create in your github account
-(Explanation: Now your project is not linked to any remote repository. In order to upload your code, you have to link your project to the new repository created on github.com using the following command)
-
-```bash
-$ git remote add origin <your repo name!>
-```
-
-<br>
-
-## Submission
-
-1. It is necessary to upload each exercise in a separate commit. The commit name must clearly indicate its content.
-
-2. Upload the link to your GitHub repository to the virtual campus, enabling your mentor to review and provide feedback.
-
-
-
-<br>
 
 ## Introduction
 
