@@ -1,79 +1,14 @@
-// If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
-
-// => Reminder, it's extremely important that you debug your code. 
-// ** It will save you a lot of time and frustration!
-// ** You'll understand the code better than with console.log(), and you'll also find errors faster. 
-// ** Don't hesitate to seek help from your peers or your mentor if you still struggle with debugging.
-
-// Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-let products = [
-    {
-        id: 1,
-        name: 'Cooking Oil',
-        price: 10.5,
-        type: 'grocery',
-        offer: {
-            number: 3,
-            percent: 20
-        }
-    },
-    {
-        id: 2,
-        name: 'Pasta',
-        price: 6.25,
-        type: 'grocery'
-    },
-    {
-        id: 3,
-        name: 'Instant cupcake mixture',
-        price: 5,
-        type: 'grocery',
-        offer: {
-            number: 10,
-            percent: 30
-        }
-    },
-    {
-        id: 4,
-        name: 'All-in-1',
-        price: 260,
-        type: 'beauty'
-    },
-    {
-        id: 5,
-        name: 'Zero makeup kit',
-        price: 20.5,
-        type: 'beauty'
-    },
-    {
-        id: 6,
-        name: 'Lip tints',
-        price: 12.75,
-        type: 'beauty'
-    },
-    {
-        id: 7,
-        name: 'Lawn dress',
-        price: 15,
-        type: 'clothes'
-    },
-    {
-        id: 8,
-        name: 'Lawn-chiffon combo',
-        price: 19.99,
-        type: 'clothes'
-    },
-    {
-        id: 9,
-        name: 'Toddler Frock',
-        price: 9.99,
-        type: 'clothes'
-    }
-
-];
-
+let products = [];
 let cart = [];
 let total = 0;
+
+fetch("./js/products.json")
+    .then(response => response.json())
+    .then(data => {
+        products = data;
+        console.log("Products Loaded:", products);
+    })
+    .catch(error => console.error('Errors in products loading', error));
 
 // Exercise 1
 function buy(id) {
@@ -100,8 +35,6 @@ function buy(id) {
     }
     updateCartCount();
     calculateTotal();
-
-    console.log(cart);
 }
 function updateCartCount() {
     let totalItems = 0;
@@ -129,7 +62,7 @@ function calculateTotal() {
             subTotal = applyPromotionsCart(cart[prod], subTotal);
             total  += subTotal;
         } else {
-            console.error(`Error con el producto en el carrito: ${cart[prod].id}`);
+            console.error(`Error in the cart: ${cart[prod].id}`);
         }
     }
     console.log("Total: " + total);
@@ -149,8 +82,6 @@ function applyPromotionsCart(product, subTotal) {
     }
     if (discount > 0) {
         subtotalWithDiscount -= subtotalWithDiscount * (discount / 100);
-
-        console.log(`Descuento de ${discount}% aplicado al producto ${product.name} y el precio final es de: ${subtotalWithDiscount} en vez que ${subtotalWithoutDiscount}`);
     }
     return subtotalWithDiscount;
 }
@@ -175,8 +106,7 @@ function printCart() {
             <td>${product.quantity}</td>
             <td>$${subTotal.toFixed(2)}</td>
             <td><button type="button" class="btn-close" onclick="removeFromCart(${product.id})"></button></td>
-        `;
-        
+        `;  
         cartList.appendChild(row);
         total += subTotal;
     }
