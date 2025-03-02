@@ -61,12 +61,21 @@ function buy(id) {
     if (!inCart){
         cart.push({...product, quantity: 1})
     }
+    updateCartCount();
     console.log(cart);
 }
-
+function updateCartCount() {
+    let totalItems = 0;
+    for (let i in cart) {
+        totalItems += cart[i].quantity;
+    }
+    document.getElementById('count_product').textContent = totalItems;
+}
 // Exercise 2
 function cleanCart() {
-
+    cart = [];
+    updateCartCount();  
+    console.log("Cart is empty");
 }
 
 // Exercise 3
