@@ -9,7 +9,7 @@
 let products = [
     {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking Oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -35,47 +35,39 @@ let products = [
     },
     {
         id: 4,
-        name: 'Olive Oil',
-        price: 15,
-        type: 'grocery'
+        name: 'All-in-1',
+        price: 260,
+        type: 'beauty'
     },
     {
         id: 5,
-        name: 'Makeup',
-        price: 8,
-        type: 'grocery',
-        offer: {
-            number: 2,
-            percent: 40
-        }
+        name: 'Zero makeup kit',
+        price: 20.5,
+        type: 'beauty'
     },
     {
         id: 6,
-        name: 'Butter',
-        price: 8,
-        type: 'grocery'
+        name: 'Lip tints',
+        price: 12.75,
+        type: 'beauty'
     },
     {
         id: 7,
-        name: 'Cookies',
-        price: 5,
-        type: 'grocery'
+        name: 'Lawn dress',
+        price: 15,
+        type: 'clothes'
     },
     {
         id: 8,
-        name: 'Bread',
-        price: 1,
-        type: 'grocery'
+        name: 'Lawn-chiffon combo',
+        price: 19.99,
+        type: 'clothes'
     },
     {
         id: 9,
-        name: 'Rice',
-        price: 5,
-        type: 'grocery',
-        offer: {
-            number: 3,
-            percent: 20
-        }
+        name: 'Toddler Frock',
+        price: 9.99,
+        type: 'clothes'
     }
 
 ];
@@ -132,34 +124,33 @@ function calculateTotal() {
 
     for(let prod = 0; prod < cart.length; prod++){
         if (!isNaN(cart[prod].price) && !isNaN(cart[prod].quantity)) {
-          
             subTotal = cart[prod].price * cart[prod].quantity;
             subTotal = applyPromotionsCart(cart[prod], subTotal);
-            
             total  += subTotal;
-           
         } else {
             console.error(`Error con el producto en el carrito: ${cart[prod].id}`);
         }
-       
     }
-    
     console.log("Total: " + total);
 }
 
 // Exercise 4
 function applyPromotionsCart(product, subTotal) {
     let discount = 0;
+    let subtotalWithoutDiscount = subTotal;
+    let subtotalWithDiscount = subTotal;
+
     if (product.offer && product.offer.number > 0) {
         if (product.quantity >= product.offer.number) {
             discount = product.offer.percent;
-            console.log(`Descuento de ${discount}% aplicado al producto ${product.name}`);
+           
         }
     }
     if (discount > 0) {
-        subTotal -= subTotal * (discount / 100);
+        subtotalWithDiscount -= subtotalWithDiscount * (discount / 100);
+        console.log(`Descuento de ${discount}% aplicado al producto ${product.name} y el precio final es de: ${subtotalWithDiscount} en vez que ${subtotalWithoutDiscount}`);
     }
-    return subTotal;
+    return subtotalWithDiscount;
 }
 
 
