@@ -162,7 +162,7 @@ function printCart() {
     const totalPrice = document.getElementById('total_price');
     cartList.innerHTML = "";
     total = 0;
-    
+
     for (let prod = 0; prod < cart.length; prod++) {
         let product = cart[prod];
         let subTotal = product.price * product.quantity;
@@ -174,6 +174,7 @@ function printCart() {
             <td>$${product.price.toFixed(2)}</td>
             <td>${product.quantity}</td>
             <td>$${subTotal.toFixed(2)}</td>
+            <td><button type="button" class="btn-close" onclick="removeFromCart(${product.id})"></button></td>
         `;
         
         cartList.appendChild(row);
@@ -189,7 +190,19 @@ function open_modal() {
 
 // Exercise 7
 function removeFromCart(id) {
-
+    for (let prod = 0; prod < cart.length; prod++) {
+        if (cart[prod].id === id) {
+            if(cart[prod].quantity === 1){
+                cart.splice(prod, 1);
+                break;
+            } else {
+                cart[prod].quantity --;
+            }
+        }
+    }
+    updateCartCount();
+    calculateTotal();
+    printCart();
 }
 
 function open_modal() {
