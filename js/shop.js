@@ -32,7 +32,38 @@ let products = [
             number: 10,
             percent: 30
         }
+    },
+    {
+        id: 4,
+        name: 'Olive Oil',
+        price: 15,
+        type: 'grocery'
+    },
+    {
+        id: 6,
+        name: 'Butter',
+        price: 8,
+        type: 'grocery'
+    },
+    {
+        id: 7,
+        name: 'Cookies',
+        price: 5,
+        type: 'grocery'
+    },
+    {
+        id: 8,
+        name: 'Bread',
+        price: 1,
+        type: 'grocery'
+    },
+    {
+        id: 9,
+        name: 'Rice',
+        price: 5,
+        type: 'grocery'
     }
+
 ];
 
 let cart = [];
@@ -62,6 +93,7 @@ function buy(id) {
         cart.push({...product, quantity: 1})
     }
     updateCartCount();
+    calculateTotal();
     console.log(cart);
 }
 function updateCartCount() {
@@ -70,6 +102,7 @@ function updateCartCount() {
         totalItems += cart[i].quantity;
     }
     document.getElementById('count_product').textContent = totalItems;
+   
 }
 // Exercise 2
 function cleanCart() {
@@ -80,7 +113,15 @@ function cleanCart() {
 
 // Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+    let subTotal = 0;
+    total = 0;
+
+    for(let prod = 0; prod < cart.length; prod++){
+        subTotal = cart[prod].price * cart[prod].quantity;
+        total  += subTotal;
+        console.log(total);
+    }
+  
 }
 
 // Exercise 4
