@@ -100,6 +100,7 @@ function buy(id) {
     }
     updateCartCount();
     calculateTotal();
+
     console.log(cart);
 }
 function updateCartCount() {
@@ -114,7 +115,7 @@ function updateCartCount() {
 function cleanCart() {
     cart = [];
     updateCartCount();  
-    console.log("Cart is empty");
+    printCart();
 }
 
 // Exercise 3
@@ -132,6 +133,7 @@ function calculateTotal() {
         }
     }
     console.log("Total: " + total);
+   
 }
 
 // Exercise 4
@@ -143,11 +145,11 @@ function applyPromotionsCart(product, subTotal) {
     if (product.offer && product.offer.number > 0) {
         if (product.quantity >= product.offer.number) {
             discount = product.offer.percent;
-           
         }
     }
     if (discount > 0) {
         subtotalWithDiscount -= subtotalWithDiscount * (discount / 100);
+
         console.log(`Descuento de ${discount}% aplicado al producto ${product.name} y el precio final es de: ${subtotalWithDiscount} en vez que ${subtotalWithoutDiscount}`);
     }
     return subtotalWithDiscount;
@@ -156,9 +158,32 @@ function applyPromotionsCart(product, subTotal) {
 
 // Exercise 5
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
-}
+    const cartList = document.getElementById('cart_list');
+    const totalPrice = document.getElementById('total_price');
+    cartList.innerHTML = "";
+    total = 0;
+    
+    for (let prod = 0; prod < cart.length; prod++) {
+        let product = cart[prod];
+        let subTotal = product.price * product.quantity;
+        subTotal = applyPromotionsCart(product, subTotal);
 
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <th scope="row">${product.name}</th>
+            <td>$${product.price.toFixed(2)}</td>
+            <td>${product.quantity}</td>
+            <td>$${subTotal.toFixed(2)}</td>
+        `;
+        
+        cartList.appendChild(row);
+        total += subTotal;
+    }
+    totalPrice.textContent = total.toFixed(2);
+}
+function open_modal() {
+    printCart();
+}
 
 // ** Nivell II **
 
