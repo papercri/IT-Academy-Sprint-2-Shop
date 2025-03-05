@@ -6,7 +6,6 @@ fetch("./js/products.json")
     .then(response => response.json())
     .then(data => {
         products = data;
-        console.log("Products Loaded:", products);
     })
     .catch(error => console.error('Errors in products loading', error));
 
@@ -28,7 +27,6 @@ function buy(id) {
             inCart = true;
             break;
         } 
-        
     }
     if (!inCart){
         cart.push({...product, quantity: 1})
@@ -42,7 +40,6 @@ function updateCartCount() {
         totalItems += cart[i].quantity;
     }
     document.getElementById('count_product').textContent = totalItems;
-   
 }
 // Exercise 2
 function cleanCart() {
@@ -65,8 +62,6 @@ function calculateTotal() {
             console.error(`Error in the cart: ${cart[prod].id}`);
         }
     }
-    console.log("Total: " + total);
-   
 }
 
 // Exercise 4
@@ -85,7 +80,6 @@ function applyPromotionsCart(product, subTotal) {
     }
     return subtotalWithDiscount;
 }
-
 
 // Exercise 5
 function printCart() {

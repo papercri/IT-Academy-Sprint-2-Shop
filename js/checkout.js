@@ -4,22 +4,13 @@ function validate(event) {
 	event.preventDefault();
 	let error = 0;
 
-
 	// Get the input fields
 	let fName = document.getElementById("fName");
 	let fEmail = document.getElementById("fEmail");
 	let fAddress = document.getElementById("fAddress");
 	let fLastN = document.getElementById("fLastN");
 	let fPassword = document.getElementById("fPassword");
-	let fPhone = document.getElementById("fPhone");
-
-	// Get the error elements
-	let errorName = document.getElementById("errorName");
-	let errorEmail = document.getElementById("errorEmail");  
-	let errorAddress = document.getElementById("errorAddress");
-	let errorLastN = document.getElementById("errorLastN");  
-	let errorPassword = document.getElementById("errorPassword");
-	let errorPhone = document.getElementById("errorPhone");  
+	let fPhone = document.getElementById("fPhone"); 
 	
 	// Validate fields entered by the user: name, phone, password, and email
 	if((fName.value == "")||(!isNaN(fName.value))||((fName.value.length) < 3)) {
@@ -46,12 +37,10 @@ function validate(event) {
 		fPhone.classList.add('is-invalid');
 		error++;
 	} 
-	 
 	if(error === 0){
 		alert("tus datos se han enviado correctamente");
 		window.location.href = "../index.html"; 
 	}
-
 }
 function validatePassword(password) {
     let hasLetter = [...password].some(char => isNaN(char)); 
@@ -59,10 +48,6 @@ function validatePassword(password) {
     return hasLetter && hasNumber; 
 }
 document.getElementById("validate").addEventListener("submit", validate);
-
-// document.getElementById("fName").addEventListener("input", function () {
-// 	this.classList.remove("is-invalid");
-// });
 
 document.querySelectorAll("#fName, #fEmail, #fAddress, #fLastN, #fPassword, #fPhone").forEach(function(input) {
     input.addEventListener("input", function() {

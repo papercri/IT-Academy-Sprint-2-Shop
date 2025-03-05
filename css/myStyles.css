@@ -1,0 +1,16 @@
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: var(--bs-purple)!important
+}
+
+.btn-outline-dark {
+    --bs-btn-color: var(--bs-purple);
+    --bs-btn-border-color: var(--bs-purple);
+    --bs-btn-hover-bg: var(--bs-purple);
+    --bs-btn-hover-border-color: var(--bs-purple);
+    --bs-btn-active-bg: var(--bs-purple);
+    --bs-btn-active-border-color: var(--bs-purple);
+    --bs-btn-disabled-color: var(--bs-purple);
+    --bs-btn-disabled-border-color: var(--bs-purple);
+}
+
