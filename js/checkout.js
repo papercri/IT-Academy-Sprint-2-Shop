@@ -1,28 +1,71 @@
 
 // Exercise 6
-function validate() {
-	var error = 0;
+function validate(event) {
+	event.preventDefault();
+	let error = 0;
+
+
 	// Get the input fields
-	var fName = document.getElementById("fName");
-	var fEmail = document.getElementById("fEmail");
+	let fName = document.getElementById("fName");
+	let fEmail = document.getElementById("fEmail");
+	let fAddress = document.getElementById("fAddress");
+	let fLastN = document.getElementById("fLastN");
+	let fPassword = document.getElementById("fPassword");
+	let fPhone = document.getElementById("fPhone");
 
 	// Get the error elements
-	var errorName = document.getElementById("errorName");
-	var errorEmail = document.getElementById("errorEmail");  
+	let errorName = document.getElementById("errorName");
+	let errorEmail = document.getElementById("errorEmail");  
+	let errorAddress = document.getElementById("errorAddress");
+	let errorLastN = document.getElementById("errorLastN");  
+	let errorPassword = document.getElementById("errorPassword");
+	let errorPhone = document.getElementById("errorPhone");  
 	
 	// Validate fields entered by the user: name, phone, password, and email
-	if(fName.value == ""){
+	if((fName.value == "")||(!isNaN(fName.value))||((fName.value.length) < 3)) {
+		fName.classList.add('is-invalid');
 		error++;
-	}
-
-	if(fEmail.value == ""){
+	} 
+	if ((fEmail.value === "")||((fEmail.value.length) < 3)||(!fEmail.value.includes("@"))||(!fEmail.value.includes("."))) {
+		fEmail.classList.add('is-invalid');
 		error++;
-	}
+	} 
+	if ((fAddress.value === "")||((fAddress.value.length) < 3)) {
+		fAddress.classList.add('is-invalid');
+		error++;
+	} 
+	if ((fLastN.value === "")||((fLastN.value.length) < 3)||(!isNaN(fLastN.value))) {
+		fLastN.classList.add('is-invalid');
+		error++;
+	} 
+	if ((fPassword.value === "")||((fPassword.value.length) < 3)||!validatePassword(fPassword.value)) {
+		fPassword.classList.add('is-invalid');
+		error++;
+	} 
+	if ((fPhone.value === "")||((fPhone.value.length) < 3)||(isNaN(fPhone.value))) {
+		fPhone.classList.add('is-invalid');
+		error++;
+	} 
 	 
-	if(error>0){
-		alert("Error");
-	}else{
-		alert("OK");
+	if(error === 0){
+		alert("tus datos se han enviado correctamente");
+		window.location.href = "../index.html"; 
 	}
 
 }
+function validatePassword(password) {
+    let hasLetter = [...password].some(char => isNaN(char)); 
+    let hasNumber = [...password].some(char => !isNaN(char)); 
+    return hasLetter && hasNumber; 
+}
+document.getElementById("validate").addEventListener("submit", validate);
+
+// document.getElementById("fName").addEventListener("input", function () {
+// 	this.classList.remove("is-invalid");
+// });
+
+document.querySelectorAll("#fName, #fEmail, #fAddress, #fLastN, #fPassword, #fPhone").forEach(function(input) {
+    input.addEventListener("input", function() {
+        this.classList.remove("is-invalid");
+    });
+});
