@@ -4,7 +4,7 @@
 
 A company in the e-commerce sector has requested a web application that allows them to sell their products online.
 
-You are responsible for setting up an initial demo version of the application for the client, which includes shopping cart management and the application of promotions to the final price. You have one week to complete this part of the sprint (2.2).
+You are responsible for setting up an initial demo version of the application for the client, which includes shopping cart management and the application of promotions to the final price. 
 
 ---
 
