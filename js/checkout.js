@@ -50,7 +50,8 @@ function validatePassword(password) {
 document.getElementById("validate").addEventListener("submit", validate);
 
 document.querySelectorAll("#fName, #fEmail, #fAddress, #fLastN, #fPassword, #fPhone").forEach(function(i) {
-    i.addEventListener("input", function() {
-        this.classList.remove("is-invalid");
-    });
+    i.addEventListener("input", 
+		function() {
+			this.classList.remove("is-invalid");
+		});
 });

@@ -1,16 +1,98 @@
-.bg-dark {
-    --bs-bg-opacity: 1;
-    background-color: var(--bs-purple)!important
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
+h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007bff !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #007bff, #6610f2);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+}
+
+/* Cards */
+.card {
+    transition: all 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-footer {
+    background-color: transparent;
+}
+
+/* Buttons */
 .btn-outline-dark {
-    --bs-btn-color: var(--bs-purple);
-    --bs-btn-border-color: var(--bs-purple);
-    --bs-btn-hover-bg: var(--bs-purple);
-    --bs-btn-hover-border-color: var(--bs-purple);
-    --bs-btn-active-bg: var(--bs-purple);
-    --bs-btn-active-border-color: var(--bs-purple);
-    --bs-btn-disabled-color: var(--bs-purple);
-    --bs-btn-disabled-border-color: var(--bs-purple);
+    transition: all 0.3s ease-in-out;
+    border-radius: 30px;
+    padding: 10px 20px;
 }
 
+.btn-outline-dark:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar-collapse {
+        background: white;
+        padding: 10px;
+    }
+}
