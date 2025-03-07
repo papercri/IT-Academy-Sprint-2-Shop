@@ -13,11 +13,11 @@ function validate(event) {
 	let fPhone = document.getElementById("fPhone"); 
 	
 	// Validate fields entered by the user: name, phone, password, and email
-	if((fName.value == "")||(!isNaN(fName.value))||((fName.value.length) < 3)) {
+	if((fName.value == "")||((fName.value.length) < 3)||!validateName(fName.value)) {
 		fName.classList.add('is-invalid');
 		error++;
 	} 
-	if ((fEmail.value === "")||((fEmail.value.length) < 3)||(!fEmail.value.includes("@"))||(!fEmail.value.includes("."))) {
+	if ((fEmail.value === "")||!validateEmail(fEmail.value)) {
 		fEmail.classList.add('is-invalid');
 		error++;
 	} 
@@ -25,7 +25,7 @@ function validate(event) {
 		fAddress.classList.add('is-invalid');
 		error++;
 	} 
-	if ((fLastN.value === "")||((fLastN.value.length) < 3)||(!isNaN(fLastN.value))) {
+	if((fLastN.value == "")||((fLastN.value.length) < 3)||!validateName(fLastN.value)) {
 		fLastN.classList.add('is-invalid');
 		error++;
 	} 
@@ -33,7 +33,7 @@ function validate(event) {
 		fPassword.classList.add('is-invalid');
 		error++;
 	} 
-	if ((fPhone.value === "")||((fPhone.value.length) < 3)||(isNaN(fPhone.value))) {
+	if ((fPhone.value === "")||((fPhone.value.length) < 9)||(isNaN(fPhone.value))) {
 		fPhone.classList.add('is-invalid');
 		error++;
 	} 
@@ -46,7 +46,15 @@ function validatePassword(password) {
     let hasLetter = [...password].some(char => isNaN(char)); 
     let hasNumber = [...password].some(char => !isNaN(char)); 
     return hasLetter && hasNumber; 
-}
+};
+function validateName(text) {
+	let hasNoNumbers = [...text].every(char =>isNaN(char));
+	return hasNoNumbers
+};
+function validateEmail(email) {
+	const pattern = /^[A-Za-z._%+-]+@[A-Za-z.-]+\.[A-Za-z]{2,4}$/
+	return pattern.test(email)
+};
 document.getElementById("validate").addEventListener("submit", validate);
 
 document.querySelectorAll("#fName, #fEmail, #fAddress, #fLastN, #fPassword, #fPhone").forEach(function(i) {

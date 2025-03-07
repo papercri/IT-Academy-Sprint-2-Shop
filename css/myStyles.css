@@ -11,7 +11,10 @@ h2 {
     margin-bottom: 30px;
     color: #222;
 }
-
+.my-3{
+    color: #007bff;
+   
+}
 /* Navbar */
 .navbar {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -57,7 +60,9 @@ header {
 
 .card-img-top {
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
+    height: 300px;
+    margin: 0 auto;
 }
 
 .card-footer {
@@ -94,5 +99,9 @@ footer {
     .navbar-collapse {
         background: white;
         padding: 10px;
+    }
+    .h-100 {
+        width: 200px !important;
+        margin: 0 auto;
     }
 }
