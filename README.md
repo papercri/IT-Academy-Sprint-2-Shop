@@ -16,6 +16,6 @@ You will be in charge of setting up an initial demo version of the application f
 git clone https://github.com/papercri/IT-Academy-Sprint-2-Shop.git
 ```
 
-2. Open index.html in your browser and see the app working!
+2. Open index.html from VScode using the extension "Live server" and see the app working!
 
 
